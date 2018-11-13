@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <meta http-equiv="Cache" content="no-cache">
+  <title>Cast+ 奇妙通</title>
+  <link rel="stylesheet" href="./css/normalize.css?v=20180910">
+  <script type="text/javascript" src="./js/jquery.js?v=20180910"></script>
+  <script type="text/javascript" src="./js/browser.js?v=20180909"></script>
+  <style>
+    html {
+      font-size: 8.0515vw;
+      -webkit-text-size-adjust: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: url('./img/background.png') no-repeat;
+      background-size: cover;
+    }
+
+    #logo {
+      margin-top: 3.9rem;
+      text-align: center;
+    }
+
+    #logo img {
+      width: 5.1rem;
+    }
+
+    #introduction {
+      margin-top: 5.2rem;
+      text-align: center;
+    }
+
+    #introduction img {
+      width: 8.8rem;
+    }
+
+    #download {
+      margin-top: 1.28rem;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    #download img {
+      width: 6.04rem;
+    }
+
+    #mask {
+      position: fixed;
+      display: none;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, .7);
+    }
+
+    #mask .arrow,
+    #mask .zh-prompt,
+    #mask .en-prompt {
+      position: absolute;
+    }
+
+    #mask .arrow {
+      top: .2rem;
+      right: 1.05rem;
+      width: 1.4rem;
+    }
+
+    #mask .zh-prompt {
+      top: 1.8rem;
+      right: 2.6rem;
+      width: 7rem;
+    }
+
+    #mask .en-prompt {
+      top: 4rem;
+      right: 1.5rem;
+      width: 10rem;
+    }
+  </style>
+</head>
+<body>
+  <section id="logo">
+    <img src="./img/logo.png" alt="logo">
+  </section>
+  <section id="introduction">
+    <img src="./img/introduction.png" alt="introduction">
+  </section>
+  <section id="download">
+    <img src="./img/button.png" alt="download">
+  </section>
+  <section id="mask">
+    <img class="arrow" src="./img/arrow.png" alt="">
+    <img class="zh-prompt" src="./img/zh_prompt.png" alt="">
+    <img class="en-prompt" src="./img/en_prompt.png" alt="">
+  </section>
+ <p id="versiontext"></p>
+  <script>
+    document.querySelector('#download').onclick = function () {
+      // do something...
+	  if (browser.versions.ios)
+	  {
+	   location.href = "itms-services://?action=download-manifest&amp;url=https://raw.githubusercontent.com/ruanchengzhi/castplus/master/gittest/app.plist"
+	  }
+	  else
+	  {
+	 //location.href = "disney.apk"
+	   location.href = "https://apk.sfsctech.com/uat/disney.apk";
+		 
+	  }
+    }
+    if (is_weixin()) {
+      document.querySelector('#mask').style.display = 'block'
+    }
+    function is_weixin () {
+      var ua = navigator.userAgent.toLowerCase()
+      // 左手边类型为Object
+      var obj = ua.match(/MicroMessenger/i)
+      if(obj != null && obj.toString() === "micromessenger") {
+        return true
+      } else {
+        return false
+      }
+    }
+  </script>
+</body>
+</html>
